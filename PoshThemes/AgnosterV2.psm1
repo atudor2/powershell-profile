@@ -38,8 +38,12 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     }
 
-    # Writes the drive portion
-    $prompt += Write-Prompt -Object (Get-ShortPath -dir $pwd) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    # Writes the drive/path portion
+    $path = Get-FullPath -dir $pwd;
+    if ($global:AgnosterV2_CustomThemeSettings.UseShortPath) {
+        $path = Get-ShortPath -dir $pwd;
+    }
+    $prompt += Write-Prompt -Object $path -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     $prompt += Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
 
     $status = Get-VCSStatus
@@ -62,6 +66,9 @@ function Write-Theme {
     $prompt
 }
 
+# Custom settings
+$global:ThemeSettings | Add-Member -NotePropertyName CustomPromptSettings -NotePropertyValue (new-object psobject -Property @{UseShortPath = $false}) -Force;
+
 $sl = $global:ThemeSettings #local settings
 $sl.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
@@ -72,3 +79,6 @@ $sl.Colors.WithForegroundColor = [ConsoleColor]::White
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
 $sl.Colors.VirtualEnvForegroundColor = [System.ConsoleColor]::White
+
+# Long/short path?
+$global:AgnosterV2_CustomThemeSettings = New-Object psobject -Property @{ UseShortPath = $false };
