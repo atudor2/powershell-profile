@@ -1,0 +1,5 @@
+# Ignore the Modules directory - it will be auto-installed if required
+Modules/*
+
+# Always allow .gitkeep files
+!*.gitkeep
