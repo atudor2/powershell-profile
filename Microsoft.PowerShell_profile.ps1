@@ -9,10 +9,6 @@ Set-Theme AgnosterV2
 # Default to short path view
 $AgnosterV2_CustomThemeSettings.UseShortPath = $true
 
-# Turn on Fuck :)
-$env:PYTHONIOENCODING="utf-8";
-Invoke-Expression "$(thefuck --alias)";
-
 ###########################################################################
 # Custom Aliases:                                                         #
 ###########################################################################
