@@ -59,6 +59,7 @@ function Get-ExplorerPaths() {
     $app = New-Object -COM 'Shell.Application';
     $i = 0;
     $paths = $app.Windows() | 
+                Where-Object { $_.LocationURL -ne "" } |
                 Select-Object @{ n = "LocationURL"; e = {[System.Uri]$_.LocationURL}} | 
                 Select-Object LocationURL, @{ n = "LocationPath"; e = {$_.LocationURL.LocalPath}} | 
                 Sort-Object -Property LocationURL | 
