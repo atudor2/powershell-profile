@@ -17,11 +17,12 @@ Set-Alias sexps Set-ExplorerPaths;
 Set-Alias ll Get-ChildItem -Force;
 Set-Alias gitlog1 Show-GitLog1;
 Set-Alias gitlog2 Show-GitLog2;
+Set-Alias touch Update-FileWriteTime;
 
 ###########################################################################
 # Custom functions:                                                       #
 ###########################################################################
-function touch {
+function Update-FileWriteTime {
     Param(
       [Parameter(Mandatory=$true)]
       [string]$Path
@@ -41,7 +42,7 @@ function Show-GitLog1() {
 function Show-GitLog2() {
     & git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all;
 }
-function Release-Ref ($ref) {
+function Close-Ref ($ref) {
     [System.Runtime.InteropServices.Marshal]::ReleaseComObject([System.__ComObject]$ref) | out-null
     [System.GC]::Collect()
     [System.GC]::WaitForPendingFinalizers()
@@ -65,6 +66,6 @@ function Get-ExplorerPaths() {
                 Sort-Object -Property LocationURL | 
                 Select-Object  @{ n = "ID" ; e= {(([ref]$i).Value++)} }, LocationURL, LocationPath;
 
-    Release-Ref($app);
+    Close-Ref($app);
     return $paths;
 }
