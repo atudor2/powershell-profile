@@ -69,3 +69,7 @@ function Get-ExplorerPaths() {
     Close-Ref($app);
     return $paths;
 }
+
+function Set-ClipboardToUppercase {
+    Get-Clipboard | ForEach-Object { $_.ToString().ToUpper() } | Set-Clipboard;
+}
