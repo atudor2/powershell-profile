@@ -10,6 +10,13 @@ Set-Theme AgnosterV2
 $AgnosterV2_CustomThemeSettings.UseShortPath = $true
 
 ###########################################################################
+# Environment Variables:                                                  #
+###########################################################################
+# Rust
+$env:RUSTUP_HOME='Z:\Bin\Applications\Installed\rust\.rustup';
+$env:CARGO_HOME='Z:\Bin\Applications\Installed\rust\.cargo';
+
+###########################################################################
 # Custom Aliases:                                                         #
 ###########################################################################
 Set-Alias gexps Get-ExplorerPaths;
