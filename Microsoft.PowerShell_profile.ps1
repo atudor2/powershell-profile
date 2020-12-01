@@ -27,6 +27,12 @@ Set-Alias gitlog2 Show-GitLog2;
 Set-Alias touch Update-FileWriteTime;
 
 ###########################################################################
+# Extension Methods                                                       #
+###########################################################################
+# ToTitleCase()
+Update-TypeData -TypeName System.String -MemberType ScriptMethod -MemberName ToTitleCase -Value { (Get-Culture).TextInfo.ToTitleCase($this.ToLower()); }
+
+###########################################################################
 # Custom functions:                                                       #
 ###########################################################################
 function Update-FileWriteTime {
