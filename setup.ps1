@@ -12,13 +12,16 @@ function InstallUpdateModule($moduleName) {
 
 Write-Output 'Installing modules...';
 
+Write-Host 'Note: If any errors are raised during install, run Obsolete-Modules.ps1 to check for obsolete modules and uninstall' -foregroundcolor 'magenta'
+
 InstallUpdateModule('posh-git');
 InstallUpdateModule('oh-my-posh');
+InstallUpdateModule('posh-sshell');
 
 Write-Output 'Overwriting previous profile'
 $profileDir = Split-Path -parent $profile;
-Get-ChildItem -Path $profileDir -Filter * -Recurse | Where-Object {$_.Fullname -notlike "$profileDir\Modules*" } | Remove-Item -WarningAction Inquire;
+Get-ChildItem -Path $profileDir -Filter * -Recurse | Where-Object { $_.Fullname -notlike "$profileDir\Modules*" } | Remove-Item -WarningAction Inquire;
 
-Copy-Item * -Destination "$profileDir/" -Recurse -Exclude test,Modules
+Copy-Item * -Destination "$profileDir/" -Recurse -Exclude test, Modules
 
 Write-Output 'Setup complete';

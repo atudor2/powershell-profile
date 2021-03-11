@@ -2,12 +2,9 @@
 # Import modules to make PS better:
 Import-Module posh-git
 Import-Module oh-my-posh
+#Import-Module posh-sshell
 
-# Tweaked version of standard Agnoster
-Set-Theme AgnosterV2
-
-# Default to short path view
-$AgnosterV2_CustomThemeSettings.UseShortPath = $true
+Set-PoshPrompt -Theme  (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json)
 
 ###########################################################################
 # Environment Variables:                                                  #
