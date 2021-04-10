@@ -17,6 +17,7 @@ Write-Host 'Note: If any errors are raised during install, run Obsolete-Modules.
 InstallUpdateModule('posh-git');
 InstallUpdateModule('oh-my-posh');
 InstallUpdateModule('posh-sshell');
+InstallUpdateModule('Terminal-Icons');
 
 Write-Output 'Overwriting previous profile'
 $profileDir = Split-Path -parent $profile;

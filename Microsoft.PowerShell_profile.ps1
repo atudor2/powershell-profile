@@ -2,6 +2,7 @@
 # Import modules to make PS better:
 Import-Module posh-git
 Import-Module oh-my-posh
+Import-Module Terminal-Icons
 #Import-Module posh-sshell
 
 Set-PoshPrompt -Theme  (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json)
