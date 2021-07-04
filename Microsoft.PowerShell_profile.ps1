@@ -4,8 +4,13 @@ Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
 #Import-Module posh-sshell
+Import-Module PSReadLine
 
 Set-PoshPrompt -Theme  (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json)
+
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
 
 ###########################################################################
 # Environment Variables:                                                  #
@@ -83,4 +88,12 @@ function Get-ExplorerPaths() {
 
 function Set-ClipboardToUppercase {
     Get-Clipboard | ForEach-Object { $_.ToString().ToUpper() } | Set-Clipboard;
+}
+
+function Get-FullHistoryFile {
+    return (Get-PSReadLineOption).HistorySavePath;
+}
+
+function Edit-FullHistoryFile {
+    code "$(Get-FullHistoryFile)";
 }

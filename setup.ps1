@@ -18,6 +18,7 @@ InstallUpdateModule('posh-git');
 InstallUpdateModule('oh-my-posh');
 InstallUpdateModule('posh-sshell');
 InstallUpdateModule('Terminal-Icons');
+InstallUpdateModule('PSReadLine');
 
 Write-Output 'Overwriting previous profile'
 $profileDir = Split-Path -parent $profile;
