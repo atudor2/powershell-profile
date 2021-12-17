@@ -3,7 +3,7 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
-#Import-Module posh-sshell
+Import-Module posh-sshell
 Import-Module PSReadLine
 
 Set-PoshPrompt -Theme  (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json)
@@ -15,9 +15,6 @@ Set-PSReadLineOption -EditMode Windows
 ###########################################################################
 # Environment Variables:                                                  #
 ###########################################################################
-# Rust
-$env:RUSTUP_HOME='Z:\Bin\Applications\Installed\rust\.rustup';
-$env:CARGO_HOME='Z:\Bin\Applications\Installed\rust\.cargo';
 
 ###########################################################################
 # Custom Aliases:                                                         #
