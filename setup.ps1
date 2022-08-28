@@ -22,7 +22,6 @@ winget upgrade JanDeDobbeleer.OhMyPosh -s winget
 Write-Output 'Installing modules...';
 Write-Host 'Note: If any errors are raised during install, run Obsolete-Modules.ps1 to check for obsolete modules and uninstall' -foregroundcolor 'magenta'
 InstallUpdateModule('posh-git');
-InstallUpdateModule('posh-sshell');
 InstallUpdateModule('Terminal-Icons');
 InstallUpdateModule('PSReadLine');
 

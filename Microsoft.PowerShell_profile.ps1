@@ -2,7 +2,6 @@
 # Import modules to make PS better:
 Import-Module posh-git
 Import-Module Terminal-Icons
-Import-Module posh-sshell
 Import-Module PSReadLine
 
 oh-my-posh init pwsh --config (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json) | Invoke-Expression
