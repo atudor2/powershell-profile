@@ -38,6 +38,11 @@ Update-TypeData -TypeName System.String -MemberType ScriptMethod -MemberName ToT
 ###########################################################################
 # Custom functions:                                                       #
 ###########################################################################
+
+function Export-GitUserConfig {
+    & git config --global --list;    
+}
+
 function Update-FileWriteTime {
     Param(
       [Parameter(Mandatory=$true)]
