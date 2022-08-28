@@ -10,12 +10,18 @@ function InstallUpdateModule($moduleName) {
     }
 }
 
+Write-Output 'Setting up oh-my-posh....';
+Write-Output 'Removing old Powershell module (if needed)';
+# Cleanup old oh-my-posh if needed
+Uninstall-Module oh-my-posh -AllVersions;
+
+Write-Output 'Upgrading oh-my-posh';
+# Upgrade oh-my-posh if needed
+winget upgrade JanDeDobbeleer.OhMyPosh -s winget
+
 Write-Output 'Installing modules...';
-
 Write-Host 'Note: If any errors are raised during install, run Obsolete-Modules.ps1 to check for obsolete modules and uninstall' -foregroundcolor 'magenta'
-
 InstallUpdateModule('posh-git');
-InstallUpdateModule('oh-my-posh');
 InstallUpdateModule('posh-sshell');
 InstallUpdateModule('Terminal-Icons');
 InstallUpdateModule('PSReadLine');

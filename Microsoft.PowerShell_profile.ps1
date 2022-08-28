@@ -1,12 +1,11 @@
 # PS Core Profile
 # Import modules to make PS better:
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module Terminal-Icons
 Import-Module posh-sshell
 Import-Module PSReadLine
 
-Set-PoshPrompt -Theme  (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json)
+oh-my-posh init pwsh --config (Join-Path (Split-Path "$PROFILE") .oh-my-posh.omp.json) | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
