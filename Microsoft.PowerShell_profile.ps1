@@ -97,3 +97,17 @@ function Get-FullHistoryFile {
 function Edit-FullHistoryFile {
     code "$(Get-FullHistoryFile)";
 }
+
+function Start-HibernateAt {
+    Param(
+      [Parameter(Mandatory=$true)]
+      [System.TimeOnly]$Time
+    )
+    
+    $now = (Get-Date).TimeOfDay;
+    $seconds = [int] $Time.ToTimeSpan().Subtract($now).TotalSeconds;
+
+    Write-Output "Hibernation will start at $Time ($seconds seconds)"
+    Start-Sleep -Seconds $seconds;
+    shutdown.exe /h;
+}
