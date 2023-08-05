@@ -24,6 +24,7 @@ Write-Host 'Note: If any errors are raised during install, run Obsolete-Modules.
 InstallUpdateModule('posh-git');
 InstallUpdateModule('Terminal-Icons');
 InstallUpdateModule('PSReadLine');
+InstallUpdateModule('Microsoft.WinGet.Client');
 
 Write-Output 'Overwriting previous profile'
 $profileDir = Split-Path -parent $profile;
