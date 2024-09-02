@@ -51,6 +51,10 @@ function Update-FileWriteTime {
     }
 }
 
+function Show-GitBranchRemoteStatus() {
+    & git for-each-ref --format="%(refname:short) %(upstream:track) %(upstream:remotename)" refs/heads;
+}
+
 function Show-GitLog1() {
     & git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all;
 }
